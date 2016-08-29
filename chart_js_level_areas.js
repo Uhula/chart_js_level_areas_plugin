@@ -22,10 +22,12 @@ var limitAreaPlugin = {
         var width = canvas.width - startX;
         var height = endY - startY;
 
-        ctx.fillRect(startX, startY, width, height);
+        if (from <= yScale.max && to >= yScale.min) {
+          ctx.fillRect(startX, startY, width, height);
 
-        if (area.text) {
-          ctx.fillText(area.text, startX + 3, endY + 3);
+          if (area.text) {
+            ctx.fillText(area.text, startX + 3, endY + 3);
+          }
         }
       }
     };
