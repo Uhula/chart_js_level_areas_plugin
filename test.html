@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js'></script>
+    <script src='chart_js_level_areas.js'></script>
+    <div>
+      <canvas id="myChart" width="800" height="600"></canvas>
+    </div>
+    <script type="text/javascript">
+      var data = {
+          labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+          datasets: [{
+              data: [1.5, 3, 2, 1, 8, 8, 2, 2, 3, 5, 12, 1],
+              fill: false,
+              borderColor: "gray"
+          }]
+      };
+
+      var ctx = document.getElementById("myChart").getContext("2d");
+
+      new Chart(ctx, {
+      		type: 'line',
+          data: data,
+          options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            levelAreas: [{
+              from: 6,
+              to: 10,
+              style: "rgba(150,150,0,0.5)",
+              text: "Warning"
+            },{
+              from: 10,
+              to: 12,
+              style: "rgba(215,100,100,0.5)",
+              text: "Danger"
+            }]
+          }
+
+      });
+    </script>
+  </head>
+</html>
